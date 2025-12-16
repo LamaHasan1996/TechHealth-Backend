@@ -1,9 +1,12 @@
 # Tech-Health Database Project (SQL + MongoDB)
 
-## Student
+## Project brief
 
-- Name: Lama Hasan
-- ID: GH1042826
+Tech-Health is a hybrid database project that models a small healthcare monitoring system.
+
+- **MySQL (Relational):** stores structured operational data such as facilities, staff/users, patients, visits, prescriptions, and medication administration events.
+- **MongoDB (NoSQL):** stores semi-structured data for high-frequency measurements and rules, including vital readings per patient/visit and medication threshold rules.
+- **Goal:** demonstrate SQL + NoSQL design, seeding (100+ rows/documents), CRUD operations, joins/aggregations, indexing, and query optimization (EXPLAIN), plus an example integration flow (SQL + Mongo used together).
 
 ## What is in this repository?
 
