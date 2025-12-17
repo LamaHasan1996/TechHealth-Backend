@@ -1,40 +1,53 @@
-# Tech-Health Database Project (SQL + MongoDB)
+# TechHealth-Backend
 
-## Project brief
+Spring Boot REST API for a small healthcare monitoring system using a hybrid database setup:
+- **MySQL (SQL):** core entities + relationships
+- **MongoDB (NoSQL):** vital readings + medication rules
 
-Tech-Health is a hybrid database project that models a small healthcare monitoring system.
+## Tech Stack
+Java 17, Spring Boot, Spring Data JPA, Spring Data MongoDB, MySQL, MongoDB, Maven, Postman
 
-- **MySQL (Relational):** stores structured operational data such as facilities, staff/users, patients, visits, prescriptions, and medication administration events.
-- **MongoDB (NoSQL):** stores semi-structured data for high-frequency measurements and rules, including vital readings per patient/visit and medication threshold rules.
-- **Goal:** demonstrate SQL + NoSQL design, seeding (100+ rows/documents), CRUD operations, joins/aggregations, indexing, and query optimization (EXPLAIN), plus an example integration flow (SQL + Mongo used together).
+## What’s Implemented
+- CRUD for all entities (Controllers + Services + Repositories)
+- Relationships:
+    - One-to-Many / Many-to-One
+    - Many-to-Many using join entities (**UserRole**, **PatientFacility**)
+- MongoDB collections:
+    - **VitalReading**
+    - **MedicationRule**
+- One class per Java file (prof note)
 
-## What is in this repository?
+## Run the Project
+### Requirements
+- Java 17+
+- MySQL running
+- MongoDB running
 
-This repository contains the database deliverables for Tech-Health (Hybrid SQL + NoSQL):
+### Setup
+1) Create MySQL database (example: `tech_health`)
+2) Run scripts:
+- `db/mysql/schema.sql`
+- `db/mysql/seed.sql`
 
-- MySQL schema + seed data (100+ rows per table)
-- SQL queries (CRUD + joins + aggregations + EXPLAIN)
-- MongoDB seed + queries (CRUD + aggregations + indexes)
+3) Create config:
+- Copy `src/main/resources/application-example.properties`
+- Rename to `src/main/resources/application.properties`
+- Update MySQL username/password + DB name if needed
 
-> The full documentation (screenshots, figures, explanations) is submitted separately as a Word/PDF file, and includes the GitHub link.
+### Start Backend
+```cmd
+.\mvnw.cmd spring-boot:run
 
-## Files
+## API + Postman
+Base URL: `http://localhost:8080`
 
-### MySQL
+Postman files:
+- `postman/TechHealth.postman_collection.json`
+- `postman/TechHealth.postman_environment.json`
 
-- `database/mysql/schema.sql`
-- `database/mysql/seed.sql`
-- `database/mysql/queries.sql`
+Environment variable:
+- `baseUrl = http://localhost:8080`
 
-### MongoDB
-
-- `database/mongo/01_seed.js`
-- `database/mongo/02_queries.js`
-
-## How to run (order)
-
-1. Run MySQL schema: `schema.sql`
-2. Run MySQL seed: `seed.sql`
-3. Run MySQL queries: `queries.sql`
-4. Run Mongo seed: `01_seed.js`
-5. Run Mongo queries: `02_queries.js`
+## Endpoints (summary)
+MySQL APIs under `/api/*` (facilities, patients, users, roles, visits, medications, prescriptions, administrations, join tables).
+MongoDB: `/api/vital-readings`, `/api/medication-rules`.
