@@ -42,7 +42,7 @@ Java 17, Spring Boot, Spring Data JPA, Spring Data MongoDB, MySQL, MongoDB, Mave
 Base URL: `http://localhost:8080`
 
 Postman files:
-- `postman/TechHealth.postman_collection.json`
+- `postman/TechHealth API Collection.postman_collection.json`
 - `postman/TechHealth.postman_environment.json`
 
 Environment variable:
